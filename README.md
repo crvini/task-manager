@@ -16,11 +16,6 @@ Este proyecto es una aplicación web para la gestión de tareas, desarrollada co
 - TypeScript
 - Bootstrap/TailwindCSS
 
-### **Backend:**
-- .NET Core Web API
-- Entity Framework Core (Base de datos en memoria)
-- C#
-
 ---
 ## 📦 Instalación y Configuración
 
@@ -36,25 +31,10 @@ cd TASK-FRONTEND
 npm install # O yarn install
 ```
 
-### **3️⃣ Instalación del Backend**
-```sh
-cd TASK-BACKEND
-```
-Si usas .NET CLI:
-```sh
-dotnet restore
-```
-
 ---
 ## ▶️ Ejecución
 
-### **1️⃣ Ejecutar el Backend**
-```sh
-dotnet run
-```
-El servidor por defecto se ejecutará en `http://localhost:5000`
-
-### **2️⃣ Ejecutar el Frontend**
+### **Ejecutar el Frontend**
 ```sh
 cd TASK-FRONTEND
 ng serve
@@ -76,7 +56,7 @@ TASK-FRONTEND/
 │── angular.json
 │── package.json
 │── README.md
-
+```
 
 ---
 ## 🌐 API Endpoints
@@ -90,3 +70,10 @@ TASK-FRONTEND/
 | DELETE | `/api/tasks/{id}`  | Eliminar una tarea         |
 
 ---
+## 🌍 Despliegue en Producción
+
+🔹 **Frontend desplegado en Netlify:** [https://task-frontend-manager.netlify.app/](https://task-frontend-manager.netlify.app/)
+🔹 **Backend desplegado en Render:** [https://task-backend-h2eb.onrender.com/swagger/index.html](https://task-backend-h2eb.onrender.com/swagger/index.html)
+
+---
+

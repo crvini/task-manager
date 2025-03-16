@@ -1,0 +1,36 @@
+<div class="card-task my-4">
+  <p-card>
+    <div class="flex align-items-center justify-content-between">
+      <div class="flex align-items-center gap-2">
+        <p-chip styleClass="pl-0 pr-3">
+          <span
+            class="bg-primary border-circle w-3rem h-3rem flex align-items-center justify-content-center text-white-alpha-90 font-semibold text-sm">
+            {{chart}}
+          </span>
+
+        </p-chip>
+        <div class="flex-1 flex flex-column gap-2">
+
+          <div class="font-bold text-lg mr-3">{{title}}</div>
+          <div class="text-500 text-sm mr-3"> {{description}} </div>
+
+
+        </div>
+      </div>
+      <div class="flex align-items-center gap-3">
+        <div *ngIf="status" class="font-bold text-sm mr-3 border-round bg-primary p-1">Completado</div>
+        <div *ngIf="!status" class="font-bold text-sm mr-3 text-white-alpha-90 border-round bg-red-500  p-1">Pendiente
+        </div>
+        <div class="flex-1 flex flex-column gap-1">
+          <button *ngIf="!status" pButton icon="pi pi-check" class="p-button-text p-button-success"
+          (click)="complete.emit()">
+        </button>
+        <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="delete.emit()">
+        </button>
+        </div>
+       
+
+      </div>
+    </div>
+  </p-card>
+</div>

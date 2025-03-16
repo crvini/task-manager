@@ -1,0 +1,59 @@
+<div class="col-10 mx-auto">
+  <p-card class="w-full">
+    <div class="flex flex-row md:flex-col justify-content-between items-center w-full p-4">
+      <div class="flex flex-row align-items-center">
+        <h2 class="text-2xl mb-1">Gestión de tareas</h2>
+      </div>
+      <div class="flex flex-row gap-4">
+        <label for="task-filter" class="font-medium text-900">Filtrar por:</label>
+        <select id="task-filter" [(ngModel)]="selectedFilter" (change)="setFilterAndLoadTasks(selectedFilter)"
+          class="p-inputtext">
+          <option value="all">Todas</option>
+          <option value="pending">Pendientes</option>
+          <option value="completed">Completadas</option>
+        </select>
+      </div>
+      <div class="flex flex-row justify-content-end ">
+        <p-button label="Nueva Tarea" pButton icon="pi pi-plus" (click)="displayModalTask=true" />
+      </div>
+    </div>
+  </p-card>
+  <div *ngFor="let task of tasks; let i = index">
+    <app-task-card [title]="task.title" [description]="task.description" [status]="task.status"
+      (delete)="deleteTask(task.id)" (complete)="updateTask(task.id)"></app-task-card>
+  </div>
+
+</div>
+<p-dialog header="Nueva Tarea" [(visible)]="displayModalTask" [modal]="true" class="p-fluid" [closable]="true"
+  [dismissableMask]="true" [style]="{width: '600px'}">
+  <form #taskForm="ngForm">
+    <div class="grid">
+
+      <div class="col-12 relative">
+        <label for="title" class="block text-900 font-medium mb-2">Título:<span
+            style="color: orangered;">*</span></label>
+        <input id="title" name="title" type="text" pInputText required [(ngModel)]="newTask.title" class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': !newTask.title}" pattern="^([A-Za-z0-9 ]+)?$" #title="ngModel" />
+        <div *ngIf="title.invalid && title.touched">
+          <small class="text-red-700">El campo no puede estar vacío.</small>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4 relative">
+        <label for="description" class="block text-900 font-medium mb-2">Descripción:<span
+            style="color: orangered;">*</span></label>
+        <textarea id="description" name="description" pInputText required [(ngModel)]="newTask.description"
+          class="w-full" [ngClass]="{'ng-invalid ng-dirty': !newTask.description}" #description="ngModel"></textarea>
+        <div *ngIf="description.invalid && description.touched">
+          <small class="text-red-700">El campo no puede estar vacío.</small>
+        </div>
+      </div>
+
+      <div class="flex justify-content-end">
+        <button pButton pRipple label="Agregar Tarea" class="p-button mt-3" type="button" [loading]="disableTask"
+          icon="pi pi-check" (click)="saveTask(taskForm)"></button>
+      </div>
+
+    </div>
+  </form>
+</p-dialog>

@@ -1,0 +1,16 @@
+.card-task{
+    max-width: 800px;
+    margin: 0 auto;
+    
+   
+  }
+  :host ::ng-deep .p-card{
+    border-radius: 10px;
+  }
+
+  :host ::ng-deep .p-card .p-card-content {
+    padding: 0rem; 
+}
+:host ::ng-deep .p-chip {
+    background-color: transparent;
+}
